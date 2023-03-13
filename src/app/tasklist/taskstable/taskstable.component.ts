@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class TaskstableComponent {
   @Input() tasks!: Array<{ title: string; status: boolean }>;
+
+  deleteTask(index: number): void {
+    this.tasks.splice(index, 1);
+  }
 }

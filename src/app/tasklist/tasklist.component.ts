@@ -20,7 +20,5 @@ export class TasklistComponent {
       status: false,
     });
     this.task = '';
-
-    // console.log(this.tasks);
   }
 }
