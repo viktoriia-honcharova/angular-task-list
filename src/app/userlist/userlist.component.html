@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-4">
+        <form name="addUser" #userForm="ngForm">
+          <h6 class="mb-2">Login</h6>
+          <input
+            [(ngModel)]="login"
+            type="text"
+            name="login"
+            class="form-control input"
+            placeholder="Viktoriia"
+            required
+          />
+          <h6 class="mt-3 mb-2">Password</h6>
+          <input
+            [(ngModel)]="password"
+            type="password"
+            name="password"
+            class="form-control input"
+            placeholder="Enter password"
+            required
+          />
+          <h6 class="mt-3 mb-2">Email address</h6>
+          <input
+            [(ngModel)]="email"
+            type="email"
+            name="email"
+            class="form-control input"
+            placeholder="Enter email"
+            required
+          />
+          <input
+            *ngIf="!editStatus"
+            type="submit"
+            class="btn btn-success d-block mt-3 w-100"
+            id="add"
+            value="Add user"
+            (click)="addUser($event); userForm.resetForm()"
+          />
+          <input
+            *ngIf="editStatus"
+            type="submit"
+            class="btn btn-success d-block mt-3 w-100"
+            id="edit"
+            value="Edit user"
+            (click)="saveEditUser($event); userForm.resetForm()"
+          />
+        </form>
+      </div>
+      <div class="col-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Login</th>
+              <th scope="col">Password</th>
+              <th scope="col">Email</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <ng-container *ngIf="users.length !== 0">
+            <tbody *ngFor="let user of users; index as i">
+              <!-- <th scope="col">{{ user.login }}</th> -->
+
+              <tr>
+                <td>
+                  {{ user.login }}
+                </td>
+                <td>
+                  {{ user.password }}
+                </td>
+                <td>
+                  {{ user.email }}
+                </td>
+                <td>
+                  <button class="btn btn-warning w-100" (click)="editUser(i)">
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-danger w-100"
+                    (click)="deleteUser(i)"
+                    [disabled]="editStatus"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </ng-container>
+          <ng-container *ngIf="users.length === 0">
+            <div class="block-empty">Not found users</div>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
