@@ -1,0 +1,9 @@
+<div class="container">
+  <p>
+    <label for="new-task">Add Item</label
+    ><input id="new-task" type="text" [(ngModel)]="task" />
+    <button (click)="addTask()">Add</button>
+  </p>
+
+  <app-taskstable [tasks]="tasks"></app-taskstable>
+</div>

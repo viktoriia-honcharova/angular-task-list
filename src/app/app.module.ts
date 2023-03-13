@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserlistComponent } from './userlist/userlist.component';
+import { TasklistComponent } from './tasklist/tasklist.component';
+import { TaskstableComponent } from './tasklist/taskstable/taskstable.component';
 
 @NgModule({
-  declarations: [AppComponent, UserlistComponent],
+  declarations: [AppComponent, TasklistComponent, TaskstableComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
